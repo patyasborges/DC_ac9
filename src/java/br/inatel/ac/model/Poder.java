@@ -29,9 +29,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Poder.findByIdPoder", query = "SELECT p FROM Poder p WHERE p.idPoder = :idPoder")
     , @NamedQuery(name = "Poder.findByNomePoder", query = "SELECT p FROM Poder p WHERE p.nomePoder = :nomePoder")
     , @NamedQuery(name = "Poder.findByDescricaoPoder", query = "SELECT p FROM Poder p WHERE p.descricaoPoder = :descricaoPoder")
-    , @NamedQuery(name = "Poder.findByHeroiPoder", query = "SELECT p FROM Poder p WHERE p.heroiPoder = :heroiPoder")
-    , @NamedQuery(name = "Poder.findByVilaoPoder", query = "SELECT p FROM Poder p WHERE p.vilaoPoder = :vilaoPoder")
-    , @NamedQuery(name = "Poder.findByImagemPoder", query = "SELECT p FROM Poder p WHERE p.imagemPoder = :imagemPoder")})
+    , @NamedQuery(name = "Poder.findByHeroiPoder", query = "SELECT p FROM Poder p WHERE p.heroiPoder = :heroiPoder")})
 public class Poder implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -49,12 +47,6 @@ public class Poder implements Serializable {
     @Size(max = 45)
     @Column(name = "HeroiPoder")
     private String heroiPoder;
-    @Size(max = 45)
-    @Column(name = "VilaoPoder")
-    private String vilaoPoder;
-    @Size(max = 300)
-    @Column(name = "ImagemPoder")
-    private String imagemPoder;
 
     public Poder() {
     }
@@ -93,22 +85,6 @@ public class Poder implements Serializable {
 
     public void setHeroiPoder(String heroiPoder) {
         this.heroiPoder = heroiPoder;
-    }
-
-    public String getVilaoPoder() {
-        return vilaoPoder;
-    }
-
-    public void setVilaoPoder(String vilaoPoder) {
-        this.vilaoPoder = vilaoPoder;
-    }
-
-    public String getImagemPoder() {
-        return imagemPoder;
-    }
-
-    public void setImagemPoder(String imagemPoder) {
-        this.imagemPoder = imagemPoder;
     }
 
     @Override

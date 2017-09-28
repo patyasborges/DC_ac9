@@ -23,42 +23,6 @@
                     <h:inputText id="descricaoPoder" value="#{poderController.selected.descricaoPoder}" title="#{bundle.CreatePoderTitle_descricaoPoder}" />
                     <h:outputLabel value="#{bundle.CreatePoderLabel_heroiPoder}" for="heroiPoder" />
                     <h:inputText id="heroiPoder" value="#{poderController.selected.heroiPoder}" title="#{bundle.CreatePoderTitle_heroiPoder}" />
-                    <h:outputLabel value="#{bundle.CreatePoderLabel_vilaoPoder}" for="vilaoPoder" />
-                    <h:inputText id="vilaoPoder" value="#{poderController.selected.vilaoPoder}" title="#{bundle.CreatePoderTitle_vilaoPoder}" />
-
-                    <script>
-                        $('#imageInput').change(function () {
-                        var frm = new FormData();
-                        frm.append('imageInput', input.files[0]);
-                        $.ajax({
-                        method: 'POST',
-                                address: 'web/image',
-                                data: frm,
-                                contentType: false,
-                                processData: false,
-                                cache: false
-                        });
-                        });
-                        // relevant code
-                        // file upload handling
-                        file, header, er : = this.GetFile("imageInput")
-                                if file != nil {
-                                // some helpers 
-                                // get the extension of the file  (import "path/filepath" for this)
-                                extension : = filepath.Ext(header.Filename)
-                                        // full filename
-                                        fileName : = header.Filename
-                                        // save to server`enter code here`
-                                        err : = this.SaveToFile("imageInput", somePathOnServer)
-                                        }
-                    </script>
-
-
-                    <input type='file' id="imageInput" name="imageInput" accept="image/*"/>
-
-
-                    <h:outputLabel value="#{bundle.CreatePoderLabel_imagemPoder}" for="imagemPoder" />
-                    <h:inputText id="imagemPoder" value="#{poderController.selected.imagemPoder}" title="#{bundle.CreatePoderTitle_imagemPoder}" />
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{poderController.create}" value="#{bundle.CreatePoderSaveLink}" />

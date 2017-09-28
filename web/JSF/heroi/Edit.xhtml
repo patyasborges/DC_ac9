@@ -23,8 +23,6 @@
                     <h:inputText id="nomeRealHeroi" value="#{heroiController.selected.nomeRealHeroi}" title="#{bundle.EditHeroiTitle_nomeRealHeroi}" />
                     <h:outputLabel value="#{bundle.EditHeroiLabel_descricaoHeroi}" for="descricaoHeroi" />
                     <h:inputText id="descricaoHeroi" value="#{heroiController.selected.descricaoHeroi}" title="#{bundle.EditHeroiTitle_descricaoHeroi}" />
-                    <h:outputLabel value="#{bundle.EditHeroiLabel_imagemHeroi}" for="imagemHeroi" />
-                    <h:inputText id="imagemHeroi" value="#{heroiController.selected.imagemHeroi}" title="#{bundle.EditHeroiTitle_imagemHeroi}" />
                 </h:panelGrid>
                 <h:commandLink action="#{heroiController.update}" value="#{bundle.EditHeroiSaveLink}"/>
                 <br />

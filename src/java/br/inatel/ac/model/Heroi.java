@@ -29,8 +29,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Heroi.findByIdHeroi", query = "SELECT h FROM Heroi h WHERE h.idHeroi = :idHeroi")
     , @NamedQuery(name = "Heroi.findByNomeHeroi", query = "SELECT h FROM Heroi h WHERE h.nomeHeroi = :nomeHeroi")
     , @NamedQuery(name = "Heroi.findByNomeRealHeroi", query = "SELECT h FROM Heroi h WHERE h.nomeRealHeroi = :nomeRealHeroi")
-    , @NamedQuery(name = "Heroi.findByDescricaoHeroi", query = "SELECT h FROM Heroi h WHERE h.descricaoHeroi = :descricaoHeroi")
-    , @NamedQuery(name = "Heroi.findByImagemHeroi", query = "SELECT h FROM Heroi h WHERE h.imagemHeroi = :imagemHeroi")})
+    , @NamedQuery(name = "Heroi.findByDescricaoHeroi", query = "SELECT h FROM Heroi h WHERE h.descricaoHeroi = :descricaoHeroi")})
 public class Heroi implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -48,9 +47,6 @@ public class Heroi implements Serializable {
     @Size(max = 500)
     @Column(name = "DescricaoHeroi")
     private String descricaoHeroi;
-    @Size(max = 300)
-    @Column(name = "ImagemHeroi")
-    private String imagemHeroi;
 
     public Heroi() {
     }
@@ -89,14 +85,6 @@ public class Heroi implements Serializable {
 
     public void setDescricaoHeroi(String descricaoHeroi) {
         this.descricaoHeroi = descricaoHeroi;
-    }
-
-    public String getImagemHeroi() {
-        return imagemHeroi;
-    }
-
-    public void setImagemHeroi(String imagemHeroi) {
-        this.imagemHeroi = imagemHeroi;
     }
 
     @Override

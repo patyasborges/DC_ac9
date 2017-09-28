@@ -23,10 +23,6 @@
                     <h:inputText id="descricaoPoder" value="#{poderController.selected.descricaoPoder}" title="#{bundle.EditPoderTitle_descricaoPoder}" />
                     <h:outputLabel value="#{bundle.EditPoderLabel_heroiPoder}" for="heroiPoder" />
                     <h:inputText id="heroiPoder" value="#{poderController.selected.heroiPoder}" title="#{bundle.EditPoderTitle_heroiPoder}" />
-                    <h:outputLabel value="#{bundle.EditPoderLabel_vilaoPoder}" for="vilaoPoder" />
-                    <h:inputText id="vilaoPoder" value="#{poderController.selected.vilaoPoder}" title="#{bundle.EditPoderTitle_vilaoPoder}" />
-                    <h:outputLabel value="#{bundle.EditPoderLabel_imagemPoder}" for="imagemPoder" />
-                    <h:inputText id="imagemPoder" value="#{poderController.selected.imagemPoder}" title="#{bundle.EditPoderTitle_imagemPoder}" />
                 </h:panelGrid>
                 <h:commandLink action="#{poderController.update}" value="#{bundle.EditPoderSaveLink}"/>
                 <br />
