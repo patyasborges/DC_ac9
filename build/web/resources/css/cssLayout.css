@@ -1,0 +1,97 @@
+element.style {
+    position: absolute;
+    margin: 0px;
+    left: 255px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    /* height: 864px; */
+    /* width: 780px; */
+    z-index: 0;
+    display: block;
+    visibility: visible;
+    background: white;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default{
+    border: none;
+    background: #036fab;/*Menus dark blue*/
+}
+.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited {
+    color: #ffffff;
+    text-decoration: none;
+    /* text-shadow: 0 1px 0 rgba(255,255,255,0.8); */
+}
+.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited{
+    color: white;
+    background-color: #2CB3FC;/*light blue selected menus*/
+
+
+}
+.ui-widget-content{
+    /*fundo*/
+    background:#0d1a2b;
+    border: none;
+    color: white;
+
+}
+.ui-widget-content a{
+    color:white;
+    /* letra do menu */
+
+}
+.ui-panelmenu .ui-panelmenu-header a {
+    display: block;
+    padding: 1em .5em .5em 2.2em;
+}
+.ui-layout-unit .ui-layout-unit-content{
+    overflow: hidden;
+}
+.ui{
+    position: relative;
+    height: 855px;
+    visibility: visible;
+    background-color: white;
+}
+
+.ui-tabs.ui-tabs-left > .ui-tabs-nav li a, .ui-tabs.ui-tabs-right > .ui-tabs-nav li a{
+    width: 85%;
+}
+
+.ui-tabs .ui-tabs-nav{
+    background : #0D1A2B;
+}
+
+
+texto{
+    margin:0 auto;
+    border:#000000 1px solid;
+    width:790px;
+    height:1200px
+}
+
+element.style {
+    height: auto;
+}
+
+h1 {
+    display: block;
+    font-size: 1em;
+    -webkit-margin-before: 0.67em;
+    -webkit-margin-after: 0.67em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
+}
+
+.dc {
+text-align: center; /*align image*/
+}
+
+
+.ui-panelmenu .ui-menuitem-link {
+    color: #ffffff;
+}
+
+body{
+    background: white;
+}

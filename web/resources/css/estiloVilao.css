@@ -1,0 +1,57 @@
+element.style {
+    position: absolute;
+    margin: 0px;
+    left: 255px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    /* height: 864px; */
+    /* width: 780px; */
+    z-index: 0;
+    display: block;
+    visibility: visible;
+   background: white;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default{
+    border: none;
+    background: #036fab;
+}
+.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited {
+    color: #ffffff;
+    text-decoration: none;
+    /* text-shadow: 0 1px 0 rgba(255,255,255,0.8); */
+}
+.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited{
+    color: red;
+    
+}
+.ui-widget-content{
+    /*fundo*/
+    background:#0d1a2b;
+    border: none;
+    color: white;
+    
+}
+.ui-widget-content a{
+    color:white;
+    /* letra do menu */
+    
+}
+.ui-panelmenu .ui-panelmenu-header a {
+    display: block;
+    padding: 1em .5em .5em 2.2em;
+}
+.ui-layout-unit .ui-layout-unit-content{
+    overflow: hidden;
+}
+.ui{
+    position: relative;
+    height: 855px;
+    visibility: visible;
+    background-color: white;
+}
+
+outputText{
+    
+}
+

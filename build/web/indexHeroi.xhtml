@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <title>Vilões da DC</title>
+        <link rel="shortcut icon" href="image/ico/favicon.ico" />
+    </h:head>
+    <h:body >  
+
+
+        <p:layout fullPage="true" style="min-width:100px;min-height:100px;">
+            <h:outputStylesheet library="css" name="cssLayout.css" />
+            <p:layoutUnit position="west" resizable="false" size="250" minSize="40" maxSize="450">
+                <h:form>
+
+                    <p:growl autoUpdate="true"/>
+                    <script >
+                        function abreLink() {
+                            window.open('http://localhost:8080/DC/', '_blank');//opens a new tab with the link
+                        }
+                    </script> 
+
+                    <input type="image" src="icon.png" width="200px" height="200px"  name="action" onclick="abreLink();"/>
+                    <p:panelMenu style="width:240px" >
+                        <p:submenu label="Heróis">
+                            <p:menuitem value="Listar" outcome="indexHeroi.xhtml"  icon="ui-icon-document" />
+                        </p:submenu>
+                        <p:submenu label="Vilões">
+                            <p:menuitem value="Listar"   outcome="indexVilao.xhtml" icon="ui-icon-document" />
+                        </p:submenu>
+                        <p:separator />
+                        <p:submenu label="Poderes" >
+                            <p:menuitem value="Listar" outcome="indexPoder.xhtml"  icon="ui-icon-document" />  
+                        </p:submenu>
+                        <p:submenu label="Sobre">
+                            <p:menuitem value="Sobre a DC" outcome="indexSobre.xhtml" />
+
+                        </p:submenu>
+                    </p:panelMenu>
+                </h:form>
+
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center">
+                <p:graphicImage value="banner.jpg" width="100%" height="200px" />
+                <p:scrollPanel mode="native" style="width:auto;height:400px">
+                    <h:form >
+
+
+                        <h:outputText escape="false" value="#{bundle.ListHeroiEmpty}" rendered="#{heroiController.items.rowCount == 0}"/>
+                        <h:panelGroup rendered="#{heroiController.items.rowCount > 0}">
+
+
+                            <h:commandLink action="#{heroiController.previous}" value="#{bundle.Previous} #{heroiController.pagination.pageSize}" rendered="#{heroiController.pagination.hasPreviousPage}"/>&nbsp;
+                            <h:commandLink action="#{heroiController.next}" value="#{bundle.Next} #{heroiController.pagination.pageSize}" rendered="#{heroiController.pagination.hasNextPage}"/>&nbsp;
+
+                            <p:tabView   orientation="right" value="#{heroiController.items}" var="item" >
+                                <p:tab title="#{item.nomeHeroi}" >
+
+                                    <p:contentFlow rendered="#{item.idHeroi eq 0}" value="#{imagesViewSuperman.images}" var="image" style="height: 400px" >
+                                        <p:graphicImage value="image/superman/#{image}" styleClass="content" />
+                                        <div class="caption" >Superman.</div>                            
+                                    </p:contentFlow>                           
+                                    <p:contentFlow rendered="#{item.idHeroi eq 1}" value="#{imagesViewBatman.images}" var="image" style="height: 400px" >
+                                        <p:graphicImage value="image/batman/#{image}" styleClass="content" />
+                                        <div class="caption" >Batman.</div>                            
+                                    </p:contentFlow> 
+                                    
+                                    <p:contentFlow rendered="#{item.idHeroi eq 2}" value="#{imagesViewSupergirl.images}" var="image" style="height: 400px" >
+                                        <p:graphicImage value="image/supergirl/#{image}" styleClass="content" />
+                                        <div class="caption" >Supergirl.</div>                            
+                                    </p:contentFlow> 
+                                    
+                                    <p:contentFlow rendered="#{item.idHeroi eq 3}" value="#{imagesViewFlash.images}" var="image" style="height: 400px" >
+                                        <p:graphicImage value="image/flash/#{image}" styleClass="content" />
+                                        <div class="caption" >Flash.</div>                            
+                                    </p:contentFlow> 
+                                    
+                                    <p:contentFlow rendered="#{item.idHeroi eq 4}" value="#{imagesViewAquaman.images}" var="image" style="height: 400px" >
+                                        <p:graphicImage value="image/aquaman/#{image}" styleClass="content" />
+                                        <div class="caption" >Aquaman.</div>                            
+                                    </p:contentFlow> 
+                                    
+                                    <p:contentFlow rendered="#{item.idHeroi eq 5}" value="#{imagesViewWonderwoman.images}" var="image" style="height: 400px" >
+                                        <p:graphicImage value="image/wonderwoman/#{image}" styleClass="content" />
+                                        <div class="caption" >Wonderwoman.</div>                            
+                                    </p:contentFlow> 
+                                    
+                                    <p:contentFlow rendered="#{item.idHeroi eq 6}" value="#{imagesViewGreenlantern.images}" var="image" style="height: 400px" >
+                                        <p:graphicImage value="image/greenlantern/#{image}" styleClass="content" />
+                                        <div class="caption" >Green Lantern.</div>                            
+                                    </p:contentFlow> 
+
+
+                                    <h:panelGrid columns="4" cellpadding="10" >               
+                                        <h:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="#{bundle.ListHeroiTitle_nomeHeroi}"/>
+                                            </f:facet>
+                                            <FONT SIZE="4" color="white" style="font-weight: bold; "><h:outputText value="#{item.nomeHeroi}"/> </FONT>
+                                        </h:column>
+
+                                        <h:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="#{bundle.ListHeroiTitle_nomeRHeroi}"/>
+                                            </f:facet>
+                                            <h:outputText value="#{item.nomeRHeroi}"/>
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="#{bundle.ListHeroiTitle_sexoHeroi}"/>
+                                            </f:facet>
+                                            <FONT SIZE="4" color="white" style="nav-up: auto "><h:outputText value="#{item.sexoHeroi}"/></FONT>
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="#{bundle.ListHeroiTitle_descricaoHeroi}"/>
+                                            </f:facet>
+                                            <FONT SIZE="4" color="white" style="font-weight: bold; "><h:outputText value="#{item.descricaoHeroi}"/></FONT>
+                                        </h:column>
+
+                                    </h:panelGrid>
+                                </p:tab>
+                            </p:tabView>
+                        </h:panelGroup>
+                    </h:form>
+                </p:scrollPanel>
+            </p:layoutUnit>
+
+
+
+        </p:layout>
+
+
+    </h:body>
+
+</html>

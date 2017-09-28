@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListVilaoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListVilaoEmpty}" rendered="#{vilaoController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{vilaoController.items.rowCount > 0}">
+                    <h:outputText value="#{vilaoController.pagination.pageFirstItem + 1}..#{vilaoController.pagination.pageLastItem + 1}/#{vilaoController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{vilaoController.previous}" value="#{bundle.Previous} #{vilaoController.pagination.pageSize}" rendered="#{vilaoController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{vilaoController.next}" value="#{bundle.Next} #{vilaoController.pagination.pageSize}" rendered="#{vilaoController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{vilaoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListVilaoTitle_idVilao}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idVilao}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListVilaoTitle_nomeVilao}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nomeVilao}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListVilaoTitle_sexoVilao}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.sexoVilao}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListVilaoTitle_nomeRealVilao}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nomeRealVilao}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListVilaoTitle_descricaoVilao}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descricaoVilao}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListVilaoTitle_imagemVilao}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.imagemVilao}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{vilaoController.prepareView}" value="#{bundle.ListVilaoViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{vilaoController.prepareEdit}" value="#{bundle.ListVilaoEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{vilaoController.destroy}" value="#{bundle.ListVilaoDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{vilaoController.prepareCreate}" value="#{bundle.ListVilaoCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListVilaoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

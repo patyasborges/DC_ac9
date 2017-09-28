@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreatePoderTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreatePoderLabel_idPoder}" for="idPoder" />
+                    <h:inputText id="idPoder" value="#{poderController.selected.idPoder}" title="#{bundle.CreatePoderTitle_idPoder}" required="true" requiredMessage="#{bundle.CreatePoderRequiredMessage_idPoder}"/>
+                    <h:outputLabel value="#{bundle.CreatePoderLabel_nomePoder}" for="nomePoder" />
+                    <h:inputText id="nomePoder" value="#{poderController.selected.nomePoder}" title="#{bundle.CreatePoderTitle_nomePoder}" />
+                    <h:outputLabel value="#{bundle.CreatePoderLabel_descricaoPoder}" for="descricaoPoder" />
+                    <h:inputText id="descricaoPoder" value="#{poderController.selected.descricaoPoder}" title="#{bundle.CreatePoderTitle_descricaoPoder}" />
+                    <h:outputLabel value="#{bundle.CreatePoderLabel_heroiPoder}" for="heroiPoder" />
+                    <h:inputText id="heroiPoder" value="#{poderController.selected.heroiPoder}" title="#{bundle.CreatePoderTitle_heroiPoder}" />
+                    <h:outputLabel value="#{bundle.CreatePoderLabel_vilaoPoder}" for="vilaoPoder" />
+                    <h:inputText id="vilaoPoder" value="#{poderController.selected.vilaoPoder}" title="#{bundle.CreatePoderTitle_vilaoPoder}" />
+
+                    <script>
+                        $('#imageInput').change(function () {
+                        var frm = new FormData();
+                        frm.append('imageInput', input.files[0]);
+                        $.ajax({
+                        method: 'POST',
+                                address: 'web/image',
+                                data: frm,
+                                contentType: false,
+                                processData: false,
+                                cache: false
+                        });
+                        });
+                        // relevant code
+                        // file upload handling
+                        file, header, er : = this.GetFile("imageInput")
+                                if file != nil {
+                                // some helpers 
+                                // get the extension of the file  (import "path/filepath" for this)
+                                extension : = filepath.Ext(header.Filename)
+                                        // full filename
+                                        fileName : = header.Filename
+                                        // save to server`enter code here`
+                                        err : = this.SaveToFile("imageInput", somePathOnServer)
+                                        }
+                    </script>
+
+
+                    <input type='file' id="imageInput" name="imageInput" accept="image/*"/>
+
+
+                    <h:outputLabel value="#{bundle.CreatePoderLabel_imagemPoder}" for="imagemPoder" />
+                    <h:inputText id="imagemPoder" value="#{poderController.selected.imagemPoder}" title="#{bundle.CreatePoderTitle_imagemPoder}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{poderController.create}" value="#{bundle.CreatePoderSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{poderController.prepareList}" value="#{bundle.CreatePoderShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreatePoderIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <title>Vilões da DC</title>
+        <link rel="shortcut icon" href="image/ico/favicon.ico" />
+    </h:head>
+    <h:body >  
+
+
+        <p:layout fullPage="true" style="min-width:100px;min-height:100px;">
+            <h:outputStylesheet library="css" name="cssLayout.css" />
+            <p:layoutUnit position="west" resizable="false" size="250" minSize="40" maxSize="450">
+                <h:form>
+
+                    <p:growl autoUpdate="true"/>
+                    <script >
+                        function abreLink() {
+                            window.open('http://localhost:8080/DC/', '_blank');//opens a new tab with the link
+                        }
+                    </script> 
+
+                    <input type="image" src="icon.png" width="200px" height="200px"  name="action" onclick="abreLink();"/>
+
+                    <p:panelMenu style="width:240px" >
+                        <p:submenu label="Heróis">
+                            <p:menuitem value="Listar" outcome="indexHeroi.xhtml"  icon="ui-icon-document" />                            
+                        </p:submenu>
+                        <p:submenu label="Vilões">
+                            <p:menuitem value="Listar"   outcome="indexVilao.xhtml" icon="ui-icon-document" />                            
+                        </p:submenu>
+                        <p:separator />
+                        <p:submenu label="Poderes" >
+                            <p:menuitem value="Listar" outcome="indexPoder.xhtml"  icon="ui-icon-document" />                            
+                        </p:submenu>
+                        <p:submenu label="Sobre">
+                            <p:menuitem value="Sobre a DC" outcome="indexSobre.xhtml" />
+                        </p:submenu>
+                    </p:panelMenu>
+                </h:form>
+
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center">
+                <p:graphicImage value="banner.jpg" width="100%" height="200px" />
+                <p:scrollPanel mode="native" style="width:auto;height:400px">
+                    <h:form >
+
+
+                        <h:outputText escape="false" value="#{bundle.ListVilaoEmpty}" rendered="#{vilaoController.items.rowCount == 0}"/>
+                        <h:panelGroup rendered="#{vilaoController.items.rowCount > 0}" >
+
+
+                            <h:commandLink action="#{vilaoController.previous}" value="#{bundle.Previous} #{vilaoController.pagination.pageSize}" rendered="#{vilaoController.pagination.hasPreviousPage}"/>&nbsp;
+                            <h:commandLink action="#{vilaoController.next}" value="#{bundle.Next} #{vilaoController.pagination.pageSize}" rendered="#{vilaoController.pagination.hasNextPage}"/>&nbsp;
+
+                            <p:tabView   orientation="right" value="#{vilaoController.items}" var="item">
+                                <p:tab title="#{item.nomeVilao}">
+
+                                    <p:contentFlow rendered="#{item.idVilao eq 0}" value="#{imagesViewBane.images}" var="image" style="height: 400px">
+                                        <p:graphicImage value="image/bane/#{image}" styleClass="content" />
+                                        <div class="caption" >Bane.</div>                            
+                                    </p:contentFlow>
+
+                                    <p:contentFlow rendered="#{item.idVilao eq 1}" value="#{imagesViewDeadshot.images}" var="image" style="height: 400px">
+                                        <p:graphicImage value="image/deadshot/#{image}" styleClass="content" />
+                                        <div class="caption" >Deadshot.</div>                            
+                                    </p:contentFlow>
+
+                                    <p:contentFlow rendered="#{item.idVilao eq 2}" value="#{imagesViewLex.images}" var="image" style="height: 400px" >
+                                        <p:graphicImage value="image/lex/#{image}" styleClass="content" />
+                                        <div class="caption" >Lex Luthor.</div>                            
+                                    </p:contentFlow>
+
+                                    <p:contentFlow rendered="#{item.idVilao eq 3}" value="#{imagesViewJoker.images}" var="image" style="height: 400px" >
+                                        <p:graphicImage value="image/joker/#{image}" styleClass="content" />
+                                        <div class="caption" >Joker.</div>                            
+                                    </p:contentFlow>
+
+                                    <p:contentFlow rendered="#{item.idVilao eq 4}" value="#{imagesViewCatwoman.images}" var="image" style="height: 400px" >
+                                        <p:graphicImage value="image/catwoman/#{image}" styleClass="content" />
+                                        <div class="caption" >Catwoman.</div>                            
+                                    </p:contentFlow>
+
+                                    <p:contentFlow rendered="#{item.idVilao eq 5}" value="#{imagesViewHarley.images}" var="image" style="height: 400px">
+                                        <p:graphicImage value="image/harley/#{image}" styleClass="content" />
+                                        <div class="caption" >Harley Quinn.</div>                            
+                                    </p:contentFlow>
+
+                                    <p:contentFlow rendered="#{item.idVilao eq 6}" value="#{imagesViewGrodd.images}" var="image" style="height: 400px">
+                                        <p:graphicImage value="image/grodd/#{image}" styleClass="content" />
+                                        <div class="caption" >Grodd.</div>                            
+                                    </p:contentFlow>
+
+
+
+                                    <h:panelGrid columns="3" cellpadding="10" >               
+                                        <h:column>
+                                            <f:facet name="header" >
+
+                                                <h:outputText value="#{bundle.ListVilaoTitle_nomeVilao}"/>
+                                            </f:facet>
+                                            <FONT SIZE="4" color="white" style="font-weight: bold;" ><h:outputText value="#{item.nomeVilao}"/></FONT>
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="#{bundle.ListVilaoTitle_sexoVilao}"/>
+                                            </f:facet>
+                                            <h:outputText value="#{item.sexoVilao}"/>
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">                                
+                                                <h:outputText value="#{bundle.ListVilaoTitle_descricaoVilao}"/>
+                                            </f:facet>
+                                            <FONT SIZE="4" color="white" style="font-weight: bold; "> <h:outputText value="#{item.descricaoVilao}"/></FONT>
+                                        </h:column>
+
+                                    </h:panelGrid>
+                                </p:tab>
+                            </p:tabView>
+                        </h:panelGroup>
+                    </h:form>
+                </p:scrollPanel>
+            </p:layoutUnit>
+
+
+
+        </p:layout>
+
+
+    </h:body>
+
+</html>

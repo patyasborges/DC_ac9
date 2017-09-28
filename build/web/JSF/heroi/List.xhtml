@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListHeroiTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListHeroiEmpty}" rendered="#{heroiController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{heroiController.items.rowCount > 0}">
+                    <h:outputText value="#{heroiController.pagination.pageFirstItem + 1}..#{heroiController.pagination.pageLastItem + 1}/#{heroiController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{heroiController.previous}" value="#{bundle.Previous} #{heroiController.pagination.pageSize}" rendered="#{heroiController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{heroiController.next}" value="#{bundle.Next} #{heroiController.pagination.pageSize}" rendered="#{heroiController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{heroiController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHeroiTitle_idHeroi}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idHeroi}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHeroiTitle_nomeHeroi}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nomeHeroi}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHeroiTitle_nomeRealHeroi}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nomeRealHeroi}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHeroiTitle_descricaoHeroi}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descricaoHeroi}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHeroiTitle_imagemHeroi}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.imagemHeroi}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{heroiController.prepareView}" value="#{bundle.ListHeroiViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{heroiController.prepareEdit}" value="#{bundle.ListHeroiEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{heroiController.destroy}" value="#{bundle.ListHeroiDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{heroiController.prepareCreate}" value="#{bundle.ListHeroiCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListHeroiIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
